@@ -2,4 +2,4 @@
 set -x
 sleep 2
 ID="$(docker plugin ls  | awk '/contiv/ {print $2}')"
-docker plugin enable $ID
+sudo docker plugin enable $ID
