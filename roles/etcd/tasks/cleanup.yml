@@ -9,7 +9,7 @@
   when: etcd_cleanup_state == true
 
 - name: cleanup iptables for etcd
-  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ etcd_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_etcd_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ etcd_client_port1 }}"

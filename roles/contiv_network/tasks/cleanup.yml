@@ -23,7 +23,7 @@
   become: true
 
 - name: cleanup iptables for contiv network control plane
-  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ netplugin_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_netplugin_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ ofnet_master_port }}"

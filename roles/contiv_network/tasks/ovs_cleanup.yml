@@ -24,7 +24,7 @@
   become: true
 
 - name: cleanup iptables for vxlan vtep port
-  shell: iptables -D INPUT -p udp --dport {{ item }} -j ACCEPT -m comment --comment "{{ netplugin_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p udp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_netplugin_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ vxlan_port }}"

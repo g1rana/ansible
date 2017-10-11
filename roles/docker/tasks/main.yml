@@ -31,8 +31,8 @@
 
 - name: setup iptables for docker
   shell: >
-      ( iptables -L INPUT | grep "{{ docker_rule_comment }} ({{ item }})" ) || \
-      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ docker_rule_comment }} ({{ item }})"
+      ( iptables -L INPUT | grep "{{ contiv_docker_rule_comment }} ({{ item }})" ) || \
+      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_docker_rule_comment }} ({{ item }})"
   with_items:
     - "{{ docker_api_port }}"
 

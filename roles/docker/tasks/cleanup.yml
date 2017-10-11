@@ -16,7 +16,7 @@
   service: name=docker-tcp.socket state=stopped
 
 - name: cleanup iptables for docker
-  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ docker_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_docker_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ docker_api_port }}"

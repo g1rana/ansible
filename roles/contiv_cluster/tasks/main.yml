@@ -57,8 +57,8 @@
 
 - name: setup iptables for clusterm
   shell: >
-      ( iptables -L INPUT | grep "{{ clusterm_rule_comment }} ({{ item }})" ) || \
-      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ clusterm_rule_comment }} ({{ item }})"
+      ( iptables -L INPUT | grep "{{ contiv_clusterm_rule_comment }} ({{ item }})" ) || \
+      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_clusterm_rule_comment }} ({{ item }})"
   with_items:
     - "{{ clusterm_client_port }}"
 

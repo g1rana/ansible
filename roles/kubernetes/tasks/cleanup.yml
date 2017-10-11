@@ -5,7 +5,7 @@
   service: name=kubernetes state=stopped
 
 - name: cleanup iptables for kubernetes
-  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ k8s_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_k8s_rule_comment }} ({{ item }})"
   with_items:
     - "{{ k8s_api_insecure_port }}"
     - "{{ k8s_api_secure_port }}"

@@ -11,8 +11,8 @@
 
 - name: setup iptables for ucp
   shell: >
-      ( iptables -L INPUT | grep "{{ ucp_rule_comment }} ({{ item }})" ) || \
-      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ ucp_rule_comment }} ({{ item }})"
+      ( iptables -L INPUT | grep "{{ contiv_ucp_rule_comment }} ({{ item }})" ) || \
+      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_ucp_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ ucp_port1 }}"

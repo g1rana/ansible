@@ -23,8 +23,8 @@
 
 - name: setup iptables for etcd
   shell: >
-      ( iptables -L INPUT | grep "{{ etcd_rule_comment }} ({{ item }})" ) || \
-      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ etcd_rule_comment }} ({{ item }})"
+      ( iptables -L INPUT | grep "{{ contiv_etcd_rule_comment }} ({{ item }})" ) || \
+      iptables -I INPUT 1 -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_etcd_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ etcd_client_port1 }}"

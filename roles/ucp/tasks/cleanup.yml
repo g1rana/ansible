@@ -18,7 +18,7 @@
   become: true
 
 - name: cleanup iptables for ucp
-  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ ucp_rule_comment }} ({{ item }})"
+  shell: iptables -D INPUT -p tcp --dport {{ item }} -j ACCEPT -m comment --comment "{{ contiv_ucp_rule_comment }} ({{ item }})"
   become: true
   with_items:
     - "{{ ucp_port1 }}"
